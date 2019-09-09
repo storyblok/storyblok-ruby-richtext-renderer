@@ -6,13 +6,13 @@ This is Storyblok's rendering service to render html from the data of the richte
 
 Add the gem to your Gemfile
 
-```bash
+```ruby
 gem 'storyblok-richtext-renderer'
 ```
 
 ### Rendering a richtext field
 
-```
+```ruby
 require 'storyblok/richtext'
 renderer = Storyblok::Richtext::HtmlRenderer.new
 renderer.render({'type' => 'doc', 'content' => [{'type' => 'paragraph', 'content' => [{'text' => 'Good', 'type' => 'text'}]}]})
