@@ -13,6 +13,7 @@ gem 'storyblok-richtext-renderer'
 ### Rendering a richtext field
 
 ```
+require 'storyblok/richtext'
 renderer = Storyblok::Richtext::HtmlRenderer.new
 renderer.render({'type' => 'doc', 'content' => [{'type' => 'paragraph', 'content' => [{'text' => 'Good', 'type' => 'text'}]}]})
 # -> <p>Good</p>

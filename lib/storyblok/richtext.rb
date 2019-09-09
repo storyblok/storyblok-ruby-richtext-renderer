@@ -1,2 +1,2 @@
-require 'richtext/version'
-require 'richtext/html_renderer'
+require 'storyblok/richtext/version'
+require 'storyblok/richtext/html_renderer'
