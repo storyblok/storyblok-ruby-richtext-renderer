@@ -53,7 +53,7 @@ module Storyblok
       end
 
       def set_component_resolver(component_resolver)
-        Storyblok::Richtext::Nodes::Blok.define_method :component_resolver, component_resolver
+        Storyblok::Richtext::Nodes::Blok.send :define_method, :component_resolver, component_resolver
       end
 
       def add_node(node)
