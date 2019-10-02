@@ -10,6 +10,7 @@ module Storyblok
     require_relative "html_renderer/marks/code"
     require_relative "html_renderer/marks/italic"
     require_relative "html_renderer/marks/link"
+    require_relative "html_renderer/marks/styled"
     require_relative "html_renderer/nodes/node"
     require_relative "html_renderer/nodes/bullet_list"
     require_relative "html_renderer/nodes/code_block"
@@ -34,7 +35,8 @@ module Storyblok
           Storyblok::Richtext::Marks::Strong,
           Storyblok::Richtext::Marks::Code,
           Storyblok::Richtext::Marks::Italic,
-          Storyblok::Richtext::Marks::Link
+          Storyblok::Richtext::Marks::Link,
+          Storyblok::Richtext::Marks::Styled
         ]
         @nodes = [
           Storyblok::Richtext::Nodes::HorizontalRule,
