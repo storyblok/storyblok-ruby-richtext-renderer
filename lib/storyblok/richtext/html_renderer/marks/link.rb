@@ -7,8 +7,9 @@ module Storyblok::Richtext
       end
 
       def tag
-        if @node['attrs'].slice('anchor')
-          attrs = @node['attrs']
+        attrs = @node['attrs']
+        if attrs['anchor']
+          # attrs = @node['attrs']
           hrefAnchor = "#{attrs['href']}##{attrs['anchor']}"
           attrs['href'] = hrefAnchor
           attrs['anchor'] = nil
