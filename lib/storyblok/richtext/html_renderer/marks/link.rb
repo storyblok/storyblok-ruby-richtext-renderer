@@ -9,7 +9,6 @@ module Storyblok::Richtext
       def tag
         attrs = @node['attrs']
         if attrs['anchor']
-          # attrs = @node['attrs']
           hrefAnchor = "#{attrs['href']}##{attrs['anchor']}"
           attrs['href'] = hrefAnchor
           attrs['anchor'] = nil
