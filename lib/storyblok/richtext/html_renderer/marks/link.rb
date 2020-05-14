@@ -8,10 +8,10 @@ module Storyblok::Richtext
 
       def tag
         attrs = @node['attrs']
+
         if attrs['anchor']
-          hrefAnchor = "#{attrs['href']}##{attrs['anchor']}"
-          attrs['href'] = hrefAnchor
-          attrs['anchor'] = nil
+          attrs['href'] = "#{attrs['href']}##{attrs['anchor']}"
+          attrs.delete('anchor')
         end
 
         [{
