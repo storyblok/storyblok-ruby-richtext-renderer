@@ -11,7 +11,7 @@ module Storyblok::Richtext
           'pre',
           {
             tag: 'code',
-            attrs: @node['attrs']
+            attrs: @node['attrs'].slice('class')
           }
         ]
       end
