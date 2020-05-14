@@ -7,9 +7,15 @@ module Storyblok::Richtext
       end
 
       def tag
+        attrs = @node['attrs']
+
+        if attrs['anchor'].is_a?(String) and !attrs['anchor'].empty?
+          attrs['href'] = "#{attrs['href']}##{attrs['anchor']}"
+        end
+
         [{
           tag: "a",
-          attrs: @node['attrs'].slice('href', 'target')
+          attrs: attrs.slice('href', 'target')
         }]
       end
     end

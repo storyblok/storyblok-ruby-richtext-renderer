@@ -19,6 +19,12 @@ renderer.render({'type' => 'doc', 'content' => [{'type' => 'paragraph', 'content
 # -> <p>Good</p>
 ```
 
+### Run all tests
+
+```bash
+rspec spec/richtext_spec.rb 
+```
+
 ### License
 
 This project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
