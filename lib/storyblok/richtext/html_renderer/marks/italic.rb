@@ -3,7 +3,7 @@ module Storyblok::Richtext
     class Italic < Mark
 
       def matching
-        @node['type'] == 'italic' || @node['type'] == 'i' || @node['type'] == 'em'
+        ['italic', 'i', 'em'].include?(@node['type'])
       end
 
       def tag
