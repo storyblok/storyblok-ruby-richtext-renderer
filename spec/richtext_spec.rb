@@ -129,7 +129,7 @@ describe 'richtext' do
     }
 
     renderer = Storyblok::Richtext::HtmlRenderer.new
-    expect(renderer.render(doc)).to eq('<a href="/link" target="_blank" uuid="300aeadc-c82d-4529-9484-f3f8f09cf9f5">link text</a>')
+    expect(renderer.render(doc)).to eq('<a href="/link" target="_blank">link text</a>')
   end
 end
 
@@ -140,6 +140,7 @@ describe 'richtext' do
       'content' => [
         {
           'type' => 'code_block',
+          'attrs' => {},
           'content' => [{
             'text' => 'code',
             'type' => 'text'
@@ -177,6 +178,6 @@ describe 'richtext' do
     }
 
     renderer = Storyblok::Richtext::HtmlRenderer.new
-    expect(renderer.render(doc)).to eq('<a href="/link#anchor-text" target="_blank" uuid="300aeadc-c82d-4529-9484-f3f8f09cf9f5">link text</a>')
+    expect(renderer.render(doc)).to eq('<a href="/link#anchor-text" target="_blank">link text</a>')
   end
 end
