@@ -11,12 +11,11 @@ module Storyblok::Richtext
 
         if attrs['anchor']
           attrs['href'] = "#{attrs['href']}##{attrs['anchor']}"
-          attrs.delete('anchor')
         end
 
         [{
           tag: "a",
-          attrs: attrs
+          attrs: attrs.slice('href', 'target')
         }]
       end
     end
