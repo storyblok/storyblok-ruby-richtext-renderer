@@ -129,7 +129,7 @@ describe 'richtext' do
     }
 
     renderer = Storyblok::Richtext::HtmlRenderer.new
-    expect(renderer.render(doc)).to eq('<a href="/link" target="_blank">link text</a>')
+    expect(renderer.render(doc)).to eq('<a href="/link" target="_blank" uuid="300aeadc-c82d-4529-9484-f3f8f09cf9f5">link text</a>')
   end
 end
 
@@ -178,6 +178,34 @@ describe 'richtext' do
     }
 
     renderer = Storyblok::Richtext::HtmlRenderer.new
-    expect(renderer.render(doc)).to eq('<a href="/link#anchor-text" target="_blank">link text</a>')
+    expect(renderer.render(doc)).to eq('<a href="/link#anchor-text" target="_blank" uuid="300aeadc-c82d-4529-9484-f3f8f09cf9f5">link text</a>')
+  end
+end
+
+describe 'richtext' do
+  it 'link to generate a tag with an email' do
+    doc = {
+      'type' => 'doc',
+      'content' => [
+      {
+        'text' => 'an email link',
+        'type' => 'text',
+        'marks' => [
+          {
+            'type' => 'link',
+            'attrs' => {
+              'href' => 'email@client.com',
+              'target' => '_blank',
+              'uuid' => nil,
+              'linktype' => 'email'
+            }
+          }
+        ]
+      }
+    ]
+    }
+
+    renderer = Storyblok::Richtext::HtmlRenderer.new
+    expect(renderer.render(doc)).to eq('<a href="mailto:email@client.com" target="_blank" linktype="email">an email link</a>')
   end
 end
