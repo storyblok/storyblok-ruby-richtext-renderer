@@ -42,7 +42,7 @@ module Storyblok
           Storyblok::Richtext::Marks::Code,
           Storyblok::Richtext::Marks::Italic,
           Storyblok::Richtext::Marks::Link,
-          # Storyblok::Richtext::Marks::Styled,
+          Storyblok::Richtext::Marks::Styled,
           Storyblok::Richtext::Marks::Anchor,
           Storyblok::Richtext::Marks::Highlight,
           Storyblok::Richtext::Marks::Subscript,
