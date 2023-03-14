@@ -43,11 +43,11 @@ module Storyblok
           Storyblok::Richtext::Marks::Italic,
           Storyblok::Richtext::Marks::Link,
           # Storyblok::Richtext::Marks::Styled,
-          # Storyblok::Richtext::Marks::Anchor,
-          # Storyblok::Richtext::Marks::Highlight,
+          Storyblok::Richtext::Marks::Anchor,
+          Storyblok::Richtext::Marks::Highlight,
           Storyblok::Richtext::Marks::Subscript,
           Storyblok::Richtext::Marks::Superscript,
-          # Storyblok::Richtext::Marks::TextStyle
+          Storyblok::Richtext::Marks::TextStyle
         ]
         @nodes = [
           Storyblok::Richtext::Nodes::HorizontalRule,

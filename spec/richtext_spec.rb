@@ -286,3 +286,125 @@ describe 'richtext' do
     expect(renderer.render(doc)).to eq('<sup>A Superscript text</sup>')
   end
 end
+
+describe 'richtext' do
+  it 'should render a anchor in the text' do
+    doc = {
+      "type" => "doc",
+      "content" => [
+        {
+          "type" => "paragraph",
+          "content" => [
+            {
+              "text" => "Paragraph with anchor in the midle",
+              "type" => "text",
+              "marks" => [
+                {
+                  "type" => "anchor",
+                  "attrs" => {
+                    "id" => "test"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+
+    renderer = Storyblok::Richtext::HtmlRenderer.new
+    expect(renderer.render(doc)).to eq('<p><span id="test">Paragraph with anchor in the midle</span></p>')
+  end
+end
+
+describe 'richtext' do
+  it 'should render a h1 title with a anchor in the middle of the text' do
+    doc = {
+      'type' => 'doc',
+      'content' => [
+        {
+          'type' => 'heading',
+          'attrs' => {
+            'level' => '1'
+          },
+          'content' => [
+            {
+              'text' => 'Title with ',
+              'type' => 'text'
+            },
+            {
+              'text' => 'Anchor',
+              'type' => 'text',
+              'marks' => [
+                {
+                  'type' => 'anchor',
+                  'attrs' => {
+                    'id' => 'test1'
+                  }
+                }
+              ]
+            },
+            {
+              'text' => ' in the midle',
+              'type' => 'text'
+            }
+          ]
+        }
+      ]
+    }
+
+    renderer = Storyblok::Richtext::HtmlRenderer.new
+    expect(renderer.render(doc)).to eq('<h1>Title with <span id="test1">Anchor</span> in the midle</h1>')
+  end
+end
+
+describe 'richtext' do
+  it 'should render a text with highlight color' do
+    doc = {
+      'type' => 'doc',
+      'content' => [
+        {
+          'text' => 'Highlighted text',
+          'type' => 'text',
+          'marks' => [
+            {
+              'type' => 'highlight',
+              'attrs' => {
+                'color' => '#E72929',
+              },
+            },
+          ],
+        },
+      ],
+    }
+
+    renderer = Storyblok::Richtext::HtmlRenderer.new
+    expect(renderer.render(doc)).to eq('<span style="background-color:#E72929;">Highlighted text</span>')
+  end
+end
+
+describe 'richtext' do
+  it 'should render a text with text color' do
+    doc = {
+      'type' => 'doc',
+      'content' => [
+        {
+          'text' => 'Colored text',
+          'type' => 'text',
+          'marks' => [
+            {
+              'type' => 'textStyle',
+              'attrs' => {
+                'color' => '#E72929',
+              },
+            },
+          ],
+        },
+      ],
+    }
+
+    renderer = Storyblok::Richtext::HtmlRenderer.new
+    expect(renderer.render(doc)).to eq('<span style="background-color:#E72929;">Colored text</span>')
+  end
+end
+
