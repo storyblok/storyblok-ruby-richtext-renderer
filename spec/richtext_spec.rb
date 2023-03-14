@@ -129,7 +129,7 @@ describe 'richtext' do
     }
 
     renderer = Storyblok::Richtext::HtmlRenderer.new
-    expect(renderer.render(doc)).to eq('<a href="/link" target="_blank">link text</a>')
+    expect(renderer.render(doc)).to eq('<a href="/link" target="_blank" uuid="300aeadc-c82d-4529-9484-f3f8f09cf9f5">link text</a>')
   end
 end
 
@@ -178,6 +178,111 @@ describe 'richtext' do
     }
 
     renderer = Storyblok::Richtext::HtmlRenderer.new
-    expect(renderer.render(doc)).to eq('<a href="/link#anchor-text" target="_blank">link text</a>')
+    expect(renderer.render(doc)).to eq('<a href="/link#anchor-text" target="_blank" uuid="300aeadc-c82d-4529-9484-f3f8f09cf9f5">link text</a>')
+  end
+end
+
+describe 'richtext' do
+  it 'link to generate a tag with an email' do
+    doc = {
+      'type' => 'doc',
+      'content' => [
+      {
+        'text' => 'an email link',
+        'type' => 'text',
+        'marks' => [
+          {
+            'type' => 'link',
+            'attrs' => {
+              'href' => 'email@client.com',
+              'target' => '_blank',
+              'uuid' => nil,
+              'linktype' => 'email'
+            }
+          }
+        ]
+      }
+    ]
+    }
+
+    renderer = Storyblok::Richtext::HtmlRenderer.new
+    expect(renderer.render(doc)).to eq('<a href="mailto:email@client.com" target="_blank" linktype="email">an email link</a>')
+  end
+end
+
+describe 'richtext' do
+  it 'should render a custom attribute in a link tag' do
+    doc = {
+      'type' => 'paragraph',
+      'content' => [
+        {
+          'text' => 'A nice link with custom attr',
+          'type' => 'text',
+          'marks' => [
+            {
+              'type' => 'link',
+              'attrs' => {
+                'href' => 'www.storyblok.com',
+                'uuid' => '300aeadc-c82d-4529-9484-f3f8f09cf9f5',
+                # 'anchor' => nil,
+                'custom' => {
+                  'rel' => 'nofollow',
+                  'title' => 'nice test',
+                },
+                'target' => '_blank',
+                'linktype' => 'url'
+              }
+            }
+          ]
+        }
+      ]
+    }
+
+    renderer = Storyblok::Richtext::HtmlRenderer.new
+    expect(renderer.render(doc)).to eq('<a href="www.storyblok.com" uuid="300aeadc-c82d-4529-9484-f3f8f09cf9f5" target="_blank" linktype="url" rel="nofollow" title="nice test">A nice link with custom attr</a>')
+  end
+end
+
+describe 'richtext' do
+  it 'should render a subscript' do
+    doc = {
+      'type' => 'paragraph',
+      'content' => [
+        {
+          'text' => 'A Subscript text',
+          'type' => 'text',
+          'marks' => [
+            {
+              'type' => 'subscript'
+            }
+          ]
+        }
+      ]
+    }
+
+    renderer = Storyblok::Richtext::HtmlRenderer.new
+    expect(renderer.render(doc)).to eq('<sub>A Subscript text</sub>')
+  end
+end
+
+describe 'richtext' do
+  it 'should render a superscript' do
+    doc = {
+      'type' => 'paragraph',
+      'content' => [
+        {
+          'text' => 'A Superscript text',
+          'type' => 'text',
+          'marks' => [
+            {
+              'type' => 'superscript'
+            }
+          ]
+        }
+      ]
+    }
+
+    renderer = Storyblok::Richtext::HtmlRenderer.new
+    expect(renderer.render(doc)).to eq('<sup>A Superscript text</sup>')
   end
 end
