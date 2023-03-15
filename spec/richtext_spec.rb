@@ -407,4 +407,3 @@ describe 'richtext' do
     expect(renderer.render(doc)).to eq('<span style="background-color:#E72929;">Colored text</span>')
   end
 end
-

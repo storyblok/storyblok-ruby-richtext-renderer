@@ -62,7 +62,6 @@ module Storyblok
           Storyblok::Richtext::Nodes::Paragraph,
           Storyblok::Richtext::Nodes::Text,
           Storyblok::Richtext::Nodes::Blok,
-          # Storyblok::Richtext::Nodes::Emoji
         ]
       end
 
