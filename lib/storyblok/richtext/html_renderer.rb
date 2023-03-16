@@ -61,7 +61,7 @@ module Storyblok
           Storyblok::Richtext::Nodes::OrderedList,
           Storyblok::Richtext::Nodes::Paragraph,
           Storyblok::Richtext::Nodes::Text,
-          Storyblok::Richtext::Nodes::Blok,
+          Storyblok::Richtext::Nodes::Blok
         ]
       end
 
