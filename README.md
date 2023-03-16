@@ -1,6 +1,6 @@
 # About
 
-This is Storyblok's rendering service to render html from the data of the richtext field type. The renderer is also compatible with Prosemirror's json format.
+This package allows you to get an HTML string from the [richtext field](https://www.storyblok.com/docs/richtext-field) of Storyblok.
 
 ## How to install
 
@@ -10,13 +10,32 @@ Add the gem to your Gemfile
 gem 'storyblok-richtext-renderer'
 ```
 
-### Rendering a richtext field
+## Usage
+
+Instantiate the `Resolver` class:
 
 ```ruby
-require 'storyblok/richtext'
+require_relative '../lib/storyblok/richtext'
+
 renderer = Storyblok::Richtext::HtmlRenderer.new
-renderer.render({'type' => 'doc', 'content' => [{'type' => 'paragraph', 'content' => [{'text' => 'Good', 'type' => 'text'}]}]})
-# -> <p>Good</p>
+
+```
+
+Use the function `render()` to get the html string from your richtext field.
+
+```ruby
+# previous code...
+
+doc = {
+  'type' => 'doc',
+  'content' => [
+    {
+      'type' => 'horizontal_rule'
+    }
+  ]
+}
+
+renderer.render(doc) # renders a html string: '<hr />'
 ```
 
 ### Run all tests
