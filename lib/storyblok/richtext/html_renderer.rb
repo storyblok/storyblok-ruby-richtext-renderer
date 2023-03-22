@@ -189,7 +189,7 @@ module Storyblok
           },
         }]
 
-        return render_tag(emoji_image_container, ' /')
+        render_tag(emoji_image_container, ' /')
       end
     end
   end
