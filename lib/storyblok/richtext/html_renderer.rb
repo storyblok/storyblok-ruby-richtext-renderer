@@ -61,7 +61,8 @@ module Storyblok
           Storyblok::Richtext::Nodes::OrderedList,
           Storyblok::Richtext::Nodes::Paragraph,
           Storyblok::Richtext::Nodes::Text,
-          Storyblok::Richtext::Nodes::Blok
+          Storyblok::Richtext::Nodes::Blok,
+          Storyblok::Richtext::Nodes::Emoji
         ]
       end
 
@@ -110,6 +111,8 @@ module Storyblok
           html.push(render_tag(node.single_tag))
         elsif node and node.html
           html.push(node.html)
+        elsif item['type'] == 'emoji'
+          html.push(render_emoji(item))
         end
 
         html.push(render_closing_tag(node.tag)) if node and node.tag
@@ -169,6 +172,24 @@ module Storyblok
           end
         end
         found.first
+      end
+
+      def render_emoji(item)
+        if item['attrs']['emoji']
+          return item['attrs']['emoji']
+        end
+
+        emoji_image_container = [{
+          tag: 'img',
+          attrs: {
+            src: item['attrs']['fallbackImage'],
+            draggable: 'false',
+            loading: 'lazy',
+            align: 'absmiddle',
+          },
+        }]
+
+        render_tag(emoji_image_container, ' /')
       end
     end
   end

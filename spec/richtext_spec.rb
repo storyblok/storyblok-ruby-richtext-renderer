@@ -407,3 +407,63 @@ describe 'richtext' do
     expect(renderer.render(doc)).to eq('<span style="background-color:#E72929;">Colored text</span>')
   end
 end
+
+describe 'richtext' do
+  it 'should render a text with a emoji' do
+    doc = {
+      'type' => 'doc',
+      'content' => [
+        {
+          'type' => 'paragraph',
+          'content' => [
+            {
+              'text' => 'Text with a emoji in the end ',
+              'type' => 'text'
+            },
+            {
+              'type' => 'emoji',
+              'attrs' => {
+                'name' => 'smile',
+                'emoji' => '😄',
+                'fallbackImage' => 'https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f604.png'
+              }
+            },
+          ]
+        }
+      ]
+    }
+
+    renderer = Storyblok::Richtext::HtmlRenderer.new
+    expect(renderer.render(doc)).to eq('<p>Text with a emoji in the end <span data-type="emoji" data-name="smile" emoji="😄">😄</span></p>')
+  end
+end
+
+describe 'richtext' do
+  it 'should render a emoji with falbackimage' do
+    doc = {
+      'type' => 'doc',
+      'content' => [
+        {
+          'type' => 'paragraph',
+          'content' => [
+            {
+              'text' => 'Text with a emoji in the end ',
+              'type' => 'text'
+            },
+            {
+              'type' => 'emoji',
+              'attrs' => {
+                'name' => 'trollface',
+                'emoji' => nil,
+                'fallbackImage' => 'https://github.githubassets.com/images/icons/emoji/trollface.png'
+              }
+            },
+          ]
+        }
+      ]
+    }
+
+    renderer = Storyblok::Richtext::HtmlRenderer.new
+    expect(renderer.render(doc)).to eq('<p>Text with a emoji in the end <span data-type="emoji" data-name="trollface"><img src="https://github.githubassets.com/images/icons/emoji/trollface.png" draggable="false" loading="lazy" align="absmiddle" /></span></p>')
+  end
+end
