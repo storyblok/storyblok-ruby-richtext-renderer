@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../lib/storyblok/richtext'
+require 'spec_helper'
 
 describe 'richtext' do
   it 'styled mark to add span with red class' do
