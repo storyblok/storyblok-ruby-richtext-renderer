@@ -19,7 +19,7 @@ module Storyblok::Richtext
           attrs['href'] = "mailto:#{emailContainer}"
         end
 
-        if attrs['custom']
+        if attrs['custom'].is_a?(Hash)
           for item in attrs['custom'] do
             attrs[item[0]] = item[1]
           end
