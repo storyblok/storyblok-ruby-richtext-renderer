@@ -8,7 +8,7 @@ module Storyblok::Richtext
 
       def tag
         attrs = {
-          style: "background-color:#{@node['attrs']['color']};"
+          style: "color:#{@node['attrs']['color']};"
         }
         [{
           tag: "span",

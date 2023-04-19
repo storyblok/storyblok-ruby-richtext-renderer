@@ -379,7 +379,7 @@ describe 'richtext' do
     }
 
     renderer = Storyblok::Richtext::HtmlRenderer.new
-    expect(renderer.render(doc)).to eq('<span style="background-color:#E72929;">Highlighted text</span>')
+    expect(renderer.render(doc)).to eq('<span style="color:#E72929;">Highlighted text</span>')
   end
 end
 
@@ -404,7 +404,7 @@ describe 'richtext' do
     }
 
     renderer = Storyblok::Richtext::HtmlRenderer.new
-    expect(renderer.render(doc)).to eq('<span style="background-color:#E72929;">Colored text</span>')
+    expect(renderer.render(doc)).to eq('<span style="color:#E72929;">Colored text</span>')
   end
 end
 

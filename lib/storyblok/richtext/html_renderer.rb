@@ -78,6 +78,10 @@ module Storyblok
         @marks.push(mark)
       end
 
+      def remove_mark(mark)
+        @marks.delete(mark)
+      end
+
       def render(data)
         html = ""
         data['content'].each do |node|
